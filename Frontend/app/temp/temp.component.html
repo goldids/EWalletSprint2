@@ -1,0 +1,27 @@
+<h1 class="text-center">Welcome to E-Wallet</h1>
+<div class="p-3 mb-2 bg-dark text-white">
+  <h1 class="p-3 mb-2 bg-dark text-white"></h1>
+</div>
+
+
+  <section class="col-md-4 mx-auto">
+    <div class="alert alert-success" *ngIf="msg!=undefined">{{msg}}</div>
+    <div class="alert alert-danger" *ngIf="errormsg!=undefined" [innerHTML]="errormsg"></div>
+   
+  <form name="form" #f="ngForm" (ngSubmit)="details('detail')">
+    <div>
+      <div class="p-3 mb-2 bg-white text-white"></div>
+    </div>
+      <div class="text-left">Enter your Wallet Id<br></div>
+      <div><input type="number"
+            id='walletidd'
+            class="form-control"
+            name="walletidd"
+            placeholder="Id"
+            required #modelwid="ngModel"
+            [(ngModel)]=walletidd/></div>
+        <div class="alert alert-danger" *ngIf="modelwid.invalid && modelwid.touched">Wallet Id is required</div><br>
+      <div class="mt-2 text-center"><input type="submit" value="Proceed" [disabled]="!f.valid" class="btn btn-danger"/></div>
+  </form>
+</section>
+  <router-outlet></router-outlet>
