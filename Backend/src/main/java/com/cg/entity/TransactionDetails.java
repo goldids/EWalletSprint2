@@ -24,8 +24,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 @Table(name="Transactiondetails")
 public class TransactionDetails {
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "transaction_seq")
-    @SequenceGenerator(sequenceName = "transaction_seq", allocationSize = 100000, name = "transaction_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "transaction_sequence")
+    @SequenceGenerator(sequenceName = "transaction_sequence", allocationSize = 1, name = "transaction_sequence")
    
 	@Id
 	@Column

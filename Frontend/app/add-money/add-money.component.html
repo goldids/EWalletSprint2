@@ -1,71 +1,23 @@
 
-<div class="p-3 mb-2 bg-dark text-white"></div>
 <section class="col-md-4 mx-auto">
 
     <div class="alert alert-success" *ngIf="msg!=undefined">{{msg}}</div>
     <div class="alert alert-danger" *ngIf="errormsg!=undefined" [innerHTML]="errormsg"></div>
     <div *ngIf="showtransactiondetail">
-    <p><small> Money added successfully<br>
-        Rs.{{transactiondetail.amount}}<br>
-        transaction Id: {{transactionid}}<br>
-        From<br>
-        {{transactiondetail.accountNo}}<br>
-        {{transactiondetail.bankname}}<br>
-        {{transactiondetail.trans_time}}</small>
-        
+        <div class="rounded shadow-lg p-3 mb-5">
+    <p class="bg-success text-white text-center"><small>Money added successfully <i class="fa fa-check-circle"></i> </small></p>
+        <p><b>To: EWallet <span class="text-right"> &#8377;{{transactiondetail.amount}}</span></b><br>
+        <small>Transaction ID: {{transactionid}}</small></p>
+        <p><b><span class="text-secondary">ADDED FROM</span></b><br>
+       <small> {{transactiondetail.bankname | uppercase}}<br>
+        <small>Bank Account Number: {{transactiondetail.accountNo}}<br>
+        {{transactiondetail.trans_time}}</small></small>
     </p>
+        </div>
     <div>
         <form name="form1" #f="ngForm" (ngSubmit)="gettransactionhistroy()" novalidate class="feedback-form">
-            <div class="mt-2 text-center"><input type="submit" value="Veiw Credit History" [disabled]="!f.valid" class="btn btn-danger"/><br></div>
+            <div class="mt-2 text-center"><input type="submit" value="Veiw Credit History" [disabled]="!f.valid" class="btn btn-primary"/><br></div>
         </form>
         </div>
 </div>
-
-<!-- <div *ngIf="showtransactiondetail">
-<div *ngFor="let transactionitr of transactionhistroy"> 
-    Rs.{{transactionitr.amount}}<br>
-    Transaction Id: {{transactionitr.tranid}}<br>
-    From<br>
-    {{transactionitr.accountNo}}<br>
-    {{transactionitr.bankname}}<br>
-    {{transactionitr.trans_time}}<hr>
-    
-</div>
- <ul>
-    <li *ngFor="let transactionitr of  transactionhistroy">
-        Rs.{{transactionitr.amount}}<br>
-        Transaction Id: {{transactionitr.tranid}}<br>
-        From<br>
-        {{transactionitr.accountNo}}<br>
-        {{transactionitr.bankname}}<br><hr>
-    </li>
-  </ul> 
-
-</div> -->
-
 </section>
-<div *ngIf="showtransactiondetail">
-    <br>
-    <table class="table table-striped"  >
-       <!-- <thead class="thead-dark" *ngIf="showtransactiondetail">-->
-        <tr class="thead-dark">
-            <th>Transaction Date</th>
-            <th>Amount</th>
-            <th>TransactionId</th>
-            <th>Account Number</th>
-            <th>Bank</th>
-        </tr>
-   <!-- </thead>-->
-    <tbody>
-        <tr *ngFor="let transactionitr of transactionhistroy">
-            
-            <td> <small>{{transactionitr.trans_time}}</small></td>
-            <td><small> Rs.{{transactionitr.amount}}</small></td>
-            <td> <small>{{transactionitr.tranid}}</small></td>
-            <td><small> {{transactionitr.accountNo}}</small></td>
-            <td><small> {{transactionitr.bankname}}</small></td>      
-        </tr>
-    </tbody>
-    </table>
-
-</div>

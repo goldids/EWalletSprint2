@@ -1,5 +1,44 @@
-<p>bankdetails works!</p>
-<form name="form1" #f="ngForm" (ngSubmit)="fun1('addmoney')" novalidate class="feedback-form">
-<input type="text">
-<input type="submit" value="Proceed">
-</form>
+
+<section class="col-md-4 mx-auto">
+        <div class="alert alert-success" *ngIf="msg!=undefined">{{msg}}</div>
+        <div class="alert alert-danger" *ngIf="errormsg!=undefined" [innerHTML]="errormsg"></div>
+    
+
+        <div *ngIf='askaccountNo' class="rounded shadow-lg p-3 mb-5">
+            <br>
+            <br>
+            <P  class="text-center text-danger"><b>Wallet ID is Not Linked With Any Bank</b></P><br>
+            <form name="form1" #f="ngForm" (ngSubmit)="askaccountdeatil()" novalidate class="feedback-form">
+                <div class="mt-2 text-center"><input type="submit" value="&#xf19c;   Link Your Wallet with Bank Account" [disabled]="!f.valid" class="btn btn-primary fa"/><br><br></div>
+            </form>
+            <div *ngIf="flag">
+            <form name="form1" #f="ngForm" (ngSubmit)="linkyourbankaccount()" novalidate class="feedback-form">
+                <label>Enter Account Number</label>
+                
+                <input type="number" id="accountNo" class="form-control" name="accountNo" placeholder="Account Number" required #modelaccountNo="ngModel" [(ngModel)]=accountno/>
+                <div class="alert alert-danger" *ngIf="modelaccountNo.invalid && modelaccountNo.touched">Account Number is required</div>
+                <div class="mt-2 text-center"><input type="submit" value="Proceed" [disabled]="!f.valid" class="btn btn-primary"/></div>
+                 
+            </form>
+        </div>
+    </div>
+        <div class="rounded shadow-lg p-3 mb-5">
+            
+            <p class="text-center text-success"><b>Wallet ID is Already Linked</b></p>
+            <br>
+            
+                <form name="form" #f2="ngForm" (ngSubmit)="getbankdetail()" novalidate class="feedback-form">
+                    <div class="mt-2 text-center"><input type="submit" value="&#xf19c;   Veiw Bank Details" [disabled]="!f2.valid" class="btn btn-primary fa"/><br><br></div>
+                </form>
+            <div *ngIf='showbankdetails'>
+                <span class="text-secondary"><b>BANK DETAIL</b></span><br>
+                <small>{{bankdetail.accountholdername}}<br>
+                A/c No:{{bankdetail.accountNo}}<br>
+                {{bankdetail.bankname}}<br></small>
+                <br>
+                <b>Available Balance: &#8377;{{bankdetail.bankbal}}</b>
+                </div>
+
+        </div>
+    </section>
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgModule } from '@angular/core';
 import { EwalletService } from '../ewallet.service';
 import { Walletuser } from '../walletuser';
 import { Router } from '@angular/router';
@@ -47,6 +48,7 @@ export class DetailsComponent implements OnInit {
     this.eser.getwalletId().subscribe(data=>
       {
       this.wallet=data;
+      console.log(data);
       this.eser.wallet=this.wallet;
       this.walletbal=this.wallet.amount;
       

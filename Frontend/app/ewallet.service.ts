@@ -17,6 +17,7 @@ export class EwalletService {
   transactions:Transactiondetails;
   transactionhistory:Transactiondetails[]=[];
   wallet:Walletuser;
+  bankaccountNo:String;
   name:String;
   debitcardinfo:Debitcard=new Debitcard();
   bank:boolean;
@@ -24,35 +25,44 @@ export class EwalletService {
   constructor(private http:HttpClient) { }
   getwalletId():Observable<any>
  {
-   let url="http://localhost:1078/Ewallet/wallet/"+this.walletid;
+   let url="http://localhost:1079/Ewallet/wallet/"+this.walletid;
 
-   return this.http.get("http://localhost:1078/Ewallet/wallet/"+this.walletid);
+   return this.http.get("http://localhost:1079/Ewallet/wallet/"+this.walletid);
  }
  addmoneyviabank():Observable<any>
  {
    
-   return this.http.get("http://localhost:1078/Ewallet/addmoney/"+this.walletid+"/"+this.amount,{responseType:'text'});
+   return this.http.get("http://localhost:1079/Ewallet/addmoney/"+this.walletid+"/"+this.amount,{responseType:'text'});
  }
  addmoneyviadebitcard():Observable<any>
  {
    
-   return this.http.get("http://localhost:1078/Ewallet/addmoneydebit/"+this.walletid+"/"+this.amount+"/"+this.debitcardinfo.debitid+"/"+this.debitcardinfo.cvv+"/"+this.debitcardinfo.expiremonth+"/"+this.debitcardinfo.expireyear,{responseType:'text'});
+   return this.http.get("http://localhost:1079/Ewallet/addmoneydebit/"+this.walletid+"/"+this.amount+"/"+this.debitcardinfo.debitid+"/"+this.debitcardinfo.cvv+"/"+this.debitcardinfo.expiremonth+"/"+this.debitcardinfo.expireyear,{responseType:'text'});
  }
 
  gettransactiondetail(transaction:String):Observable<any>
  {
-   return this.http.get("http://localhost:1078/Ewallet/transaction/"+transaction);
+   return this.http.get("http://localhost:1079/Ewallet/transaction/"+transaction);
  }
  gettransactionhistroy():Observable<any>
  {
-   return this.http.get("http://localhost:1078/Ewallet/transactiondetails/"+this.walletid);
+   return this.http.get("http://localhost:1079/Ewallet/transactiondetails/"+this.walletid);
  }
  checkamount():Observable<any>
  {
-   return this.http.get("http://localhost:1078/Ewallet/amount/"+this.amount,{responseType:'text'});
+   return this.http.get("http://localhost:1079/Ewallet/amount/"+this.amount,{responseType:'text'});
  }
-//  linkyourbank():Observable<any>
-//  {
-//   return this.http.get("http://localhost:1078/Ewallet/linkbankaccount/"+this.walletid+"/"+,{responseType:'text'});
-//  }
+ linkyourbank(accountNo:String):Observable<any>
+ {
+  return this.http.get("http://localhost:1079/Ewallet/linkbankaccount/"+this.walletid+"/"+accountNo,{responseType:'text'});
+ }
+ linkbankcheck():Observable<any>
+ {
+  return this.http.get("http://localhost:1079/Ewallet/checklink/"+this.walletid,{responseType:'text'});
+ }
+ getbankdetail():Observable<any>
+ {
+   alert(this.wallet.bankuser.accountNo);
+  return this.http.get("http://localhost:1079/Ewallet/bankdetail/"+this.wallet.bankuser.accountNo);
+ }
 }

@@ -51,6 +51,12 @@ public class EwaletController {
 	
 		return  service.getwalletdetailsbyid(walletid);
 	}
+	@RequestMapping("/bankdetail/{accountno}")
+	public BankAccount getbankdetails(@PathVariable String accountno) throws AddmoneyServiceException
+	{
+	
+		return  service.getbankdetailbyId(accountno);
+	}
 	
 	@RequestMapping("/transaction/{transactionid}")
 	public TransactionDetails getTransactiondetail(@PathVariable int transactionid)
@@ -106,7 +112,7 @@ public class EwaletController {
 		return  service.addMoneyviadebitcard(walletid,amount, cardno,cvv,expirymonth,expiryyear);
 	}
 	@RequestMapping(value="/linkbankaccount/{walletid}/{accountno}")
-	public String linkbankaccount(@PathVariable int walletid,@PathVariable String accountno)
+	public String linkbankaccount(@PathVariable int walletid,@PathVariable String accountno) throws AddmoneyServiceException
 	{
 		return  service.linkbankaccount(walletid, accountno);
 	}
@@ -119,5 +125,10 @@ public class EwaletController {
 	public String checkenteredamount(@PathVariable double amount) throws AddmoneyServiceException
 	{
 		return  service.checkenteredAmount(amount);
+	}
+	@RequestMapping(value="/checklink/{walletid}")
+	public String checkbankislinked(@PathVariable int walletid) throws AddmoneyServiceException
+	{
+		return  service.Checkbankislinked(walletid);
 	}
 	}

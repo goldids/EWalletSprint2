@@ -10,7 +10,4 @@ import com.cg.entity.WalletUser;
 
 @Repository
 public interface IWalletDao extends CrudRepository< WalletUser, Integer>{
-//	public void create(WalletUser s);
-//	public List getwalletdetails();
-//	public void updateWallet(int walletId,double amount);
 }

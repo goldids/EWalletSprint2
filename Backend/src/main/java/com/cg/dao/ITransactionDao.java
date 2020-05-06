@@ -7,5 +7,5 @@ import com.cg.entity.TransactionDetails;
 
 @Repository
 public interface ITransactionDao extends CrudRepository<TransactionDetails, Integer>{
-//public void create(TransactionDetails t);
+
 }

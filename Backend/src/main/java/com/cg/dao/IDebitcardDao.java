@@ -10,6 +10,5 @@ import com.cg.entity.Debitcard;
 
 @Repository
 public interface IDebitcardDao extends CrudRepository<Debitcard,String>{
-//	public void create(Debitcard s);
-//	public List getdebitcarddetails();
+
 }

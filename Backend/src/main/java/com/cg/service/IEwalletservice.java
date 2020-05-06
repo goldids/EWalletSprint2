@@ -15,6 +15,7 @@ import com.cg.userException.AddmoneyServiceException;
 public interface IEwalletservice {
 	public void createBankdetails(BankAccount s);
 	public List getbankdetails();
+	public BankAccount getbankdetailbyId(String accountno) throws AddmoneyServiceException;
 	public void updatebankamount(double amount,String acc_no) throws AddmoneyServiceException;
 	
 	
@@ -33,9 +34,9 @@ public interface IEwalletservice {
 	
 	public String addMoneyviabankaccount(int walletid,double amount) throws AddmoneyServiceException;
 	public String addMoneyviadebitcard(int walletid,double amount,String debitcardNo,int cvv,int expirymonth,int expiryyear)throws AddmoneyServiceException;
-	public String linkbankaccount(int walletid, String bankaccountno);
+	public String linkbankaccount(int walletid, String bankaccountno) throws AddmoneyServiceException;
 	public String checkenteredAmount(double enteredamount)throws AddmoneyServiceException;
-	
+public String Checkbankislinked(int walletid) throws AddmoneyServiceException;	
 	
 	
 }

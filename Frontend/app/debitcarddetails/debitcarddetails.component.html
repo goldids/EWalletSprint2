@@ -1,1 +1,28 @@
-<p>debitcarddetails works!</p>
+<section class="col-md-4 mx-auto">
+    <div *ngIf="!showtransactionhistroydetails">
+        <h2 class="text-center">No Transaction History</h2>
+    </div>
+<div *ngIf="showtransactionhistroydetails" class="text-center">
+    <table class="table table-striped"  >
+        <!-- <thead class="thead-dark" *ngIf="showtransactiondetail">-->
+         <tr class="thead-dark">
+             <th>Transaction Date</th>
+             <th>Amount</th>
+             <th>TransactionId</th>
+             <th>Account Number</th>
+             <th>Bank</th>
+         </tr>
+    <!-- </thead>-->
+     <tbody>
+         <tr *ngFor="let transactionitr of transactionhistroy">
+             
+             <td> <small>{{transactionitr.trans_time}}</small></td>
+             <td><small> Rs.{{transactionitr.amount}}</small></td>
+             <td> <small>{{transactionitr.tranid}}</small></td>
+             <td><small> {{transactionitr.accountNo}}</small></td>
+             <td><small> {{transactionitr.bankname}}</small></td>      
+         </tr>
+     </tbody>
+     </table>
+    </div>
+</section>

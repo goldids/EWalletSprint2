@@ -23,18 +23,18 @@ public class EWalletApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-//		
-//		BankAccount bank=new BankAccount();
-//		
-//		
-//		bank.setAccountNo("10021018781");
+				
+				
+		
+		BankAccount bank=new BankAccount();
+		bank.setAccountNo("1002018781");
 //		Debitcard d =new Debitcard();
 //		
 //		d.setCvv(37);
 //		d.setDebitid("2222111188881121");
 //		d.setExpiremonth(2);
 //		d.setExpireyear(2026);
-//		d.setBankaccount(bank);
+//		d.setBanks(bank);
 //		
 //Debitcard d1 =new Debitcard();
 //		
@@ -44,12 +44,23 @@ public class EWalletApplication implements CommandLineRunner{
 //		d1.setDebitid("1112223334445551");
 //		d1.setExpiremonth(8);
 //		d1.setExpireyear(2020);
-//		d1.setBankaccount(bank1);
+//		d1.setBanks(bank1);
 //		
 //		
 //		dao.save(d); dao.save(d1); 
 //		//bank.getDebit().add(d);
-		
+//		
+//		Debitcard d2 =new Debitcard();
+//		BankAccount bank2=new BankAccount();
+//		bank2.setAccountNo("10004018251");
+//				d2.setCvv(387);
+//				d2.setDebitid("12110121012111212");
+//				d2.setExpiremonth(8);
+//				d2.setExpireyear(2023);
+//				d2.setBanks(bank2);
+//				
+//				
+//				 dao.save(d2);
 	
 		
 				

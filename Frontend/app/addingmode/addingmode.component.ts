@@ -18,6 +18,7 @@ export class AddingmodeComponent implements OnInit {
   debitcardinfo:Debitcard=new Debitcard();
   name:String;
  transactionid:String
+ walletbalance:String;
   constructor(private eser:EwalletService,private router: Router) { }
 
   ngOnInit(): void {
@@ -25,9 +26,9 @@ export class AddingmodeComponent implements OnInit {
   }
   gotobankinfo(pageName:string)
   {
-    alert("okk");
-    alert(pageName);
+   
     this.bank=true;
+    this.walletbalance=this.eser.amount;
     this.eser.bank=true;
     this.eser.debitcard=false;
     this.debitcard=false;
@@ -36,8 +37,7 @@ export class AddingmodeComponent implements OnInit {
 
   gotodebitinfo(pageName:string)
   {
-    alert("okk");
-    alert(pageName);
+    this.walletbalance=this.eser.amount;
     this.bank=false;
     this.eser.debitcard=true;
     this.eser.bank=false;  this.debitcard=true;
@@ -92,8 +92,5 @@ export class AddingmodeComponent implements OnInit {
     );
     }
   }
-linkyourbankaccount()
-{
-  
-}
+
 }

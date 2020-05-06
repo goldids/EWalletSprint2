@@ -5,6 +5,6 @@ export class Walletuser {
     walletid:number;
     amount:number;
     acc_no:String;
-    bank_acc:Bank;
+    bankuser:Bank;
     trans_id:Transactiondetails[]=[];
 }

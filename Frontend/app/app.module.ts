@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BankdetailsComponent } from './bankdetails/bankdetails.component';
 import { DebitcarddetailsComponent } from './debitcarddetails/debitcarddetails.component';
 import { AddingmodeComponent } from './addingmode/addingmode.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { ShowbalanceComponent } from './showbalance/showbalance.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { AddingmodeComponent } from './addingmode/addingmode.component';
     DetailsComponent,
     BankdetailsComponent,
     DebitcarddetailsComponent,
-    AddingmodeComponent
+    AddingmodeComponent,
+    HomepageComponent,
+    ShowbalanceComponent
   ],
   imports: [
     BrowserModule,

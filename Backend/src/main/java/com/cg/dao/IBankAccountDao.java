@@ -9,7 +9,4 @@ import com.cg.entity.BankAccount;
 
 @Repository
 public interface IBankAccountDao extends CrudRepository<BankAccount, String>{
-//	public void create(BankAccount s);
-//
-//	public List getbankdetails();
 }

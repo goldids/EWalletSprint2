@@ -1,46 +1,50 @@
 
-<div class="p-3 mb-2 bg-dark text-white">
-    <h1 class="p-3 mb-2 bg-dark text-white"></h1>
-</div>
+
 <section class="col-md-4 mx-auto">
     <div>
         <div class="alert alert-success" *ngIf="msg!=undefined">{{msg}}</div>
     <div class="alert alert-danger" *ngIf="errormsg!=undefined" [innerHTML]="errormsg"></div>
     <h4>Choose mode of transaction</h4>
 <form name="form" #f1="ngForm" novalidate class="feedback-form">
-    <div >
-    <input type="radio" name="option" id="bank" value="bank" [(ngModel)]="choosenoption" (click)="gotobankinfo('bankdetails')">Bank<br>
+    <div>
+        <div class="rounded shadow-lg p-3 mb-5">
+           
+             <input type="radio" name="option" id="bank" value="bank" [(ngModel)]="choosenoption" (click)="gotobankinfo('bankdetails')"><b>Bank</b><br>
     <div *ngIf=bank>
         <form name="form1" #f="ngForm" (ngSubmit)="gotoaddmoney('addmoney')" novalidate class="feedback-form">
            
-            <div class="mt-2 text-center"><input type="submit" value="Proceed" [disabled]="!f.valid" class="btn btn-danger"/></div>
-        </form>
-        <form name="linkbankaccount" #link="ngForm" (ngSubmit)="linkyourbankaccount()" novalidate class="feedback-form">
-           
-            <div class="mt-2 text-center"><input type="submit" value="Link your Bank Account" [disabled]="!f.valid" class="btn btn-danger"/></div>
+            <div class="mt-2 text-center"><input type="submit" value="Pay &#8377; {{walletbalance}}" [disabled]="!f.valid" class="btn btn-primary"/></div>
         </form>
     </div>
-    <input type="radio" name="option" id="debitcard" value="debitcard" [(ngModel)]="choosenoption" (click)="gotodebitinfo('debitcarddetails')">Debitcard
+    </div>
+    <div class="rounded shadow-lg p-3 mb-5">
+    <input type="radio" name="option" id="debitcard" value="debitcard" [(ngModel)]="choosenoption" (click)="gotodebitinfo('debitcarddetails')"><b>Debit card</b>
     <div *ngIf=debitcard>
         <form name="form" #f2="ngForm" (ngSubmit)="gotoaddmoney('addmoney')" novalidate class="feedback-form">
-            <small> ENTER YOUR CARD DETAILS</small>
-            <input type="number" id="cardno" class="form-control" name="cardno" placeholder="" required #modelcard="ngModel" [(ngModel)]="debitcardinfo.debitid"/>
+            <small> Enter Your Card Details</small>
+            <input type="number" id="cardno" class="form-control" name="cardno" placeholder="Card number" ngModel maxlength="16" required #modelcard="ngModel" [(ngModel)]="debitcardinfo.debitid"/>
             <div class="alert alert-danger" *ngIf="modelcard.invalid && modelcard.touched">Account holdername required</div>
 
             <div class="row">
                 <div class="col">
                 <small>Expiry Month</small>
-                  <input type="number" class="form-control" id="expirymonth" placeholder="" name="expirymonth" required #modelexp="ngModel" [(ngModel)]="debitcardinfo.expiremonth">
-                  <div class="alert alert-danger" *ngIf="modelexp.invalid && modelexp.touched"><small><small>This field is required</small></small></div>
+                  <input type="number" class="form-control" id="expirymonth" placeholder="MM" name="expirymonth" ngModel maxlength="2" required #modelexp="ngModel" pattern="[0-1][0-9]" [(ngModel)]="debitcardinfo.expiremonth">
+                  <div class="alert alert-danger" *ngIf="modelexp.invalid && modelexp.touched">
+                    <div *ngIf="modelexp.errors.required"><small>This field is required</small></div>
+                    <div *ngIf="modelexp.errors.pattern"><small>Enter valid Month</small></div>
+                     </div>
                 </div>
                 <div class="col">
                     <small>Expiry year</small>
-                      <input type="number" class="form-control" id="expiryyear" placeholder="" name="expiryyear" required #modelexp="ngModel" [(ngModel)]="debitcardinfo.expireyear">
-                      <div class="alert alert-danger" *ngIf="modelexp.invalid && modelexp.touched"><small>This field is required</small></div>
-                    </div>
+                      <input type="number" class="form-control" id="expiryyear" placeholder="YYYY" name="expiryyear" ngModel maxlength="4" required #modelexpyear="ngModel" pattern="[2-3][0-1][2-9][0-9]" [(ngModel)]="debitcardinfo.expireyear">
+                      <div class="alert alert-danger" *ngIf="modelexpyear.invalid && modelexpyear.touched">
+                        <div *ngIf="modelexpyear.errors.required"><small>This field is required</small></div>
+                        <div *ngIf="modelexpyear.errors.pattern"><small>Enter valid year</small></div>
+                         </div>
+                      </div>
                 <div class="col">
                     <small>cvv</small>
-                  <input type="password" class="form-control" id="cvv" placeholder="" name="cvv" ngModel maxlength="3" required #modelcvv="ngModel" pattern="[1-9][0-9][0-9]" [(ngModel)]="debitcardinfo.cvv">
+                  <input type="password" class="form-control" id="cvv" placeholder="cvv" name="cvv" ngModel maxlength="3" required #modelcvv="ngModel" pattern="[1-9][0-9][0-9]" [(ngModel)]="debitcardinfo.cvv">
                   <div class="alert alert-danger" *ngIf="modelcvv.invalid && modelcvv.touched">
                       <div *ngIf="modelcvv.errors.required"><small>This field is required</small></div>
                       <div *ngIf="modelcvv.errors.pattern"><small>Enter Valid cvv</small></div>
@@ -48,9 +52,11 @@
                     </div>
                 </div>
               </div>
-              <div class="mt-2 text-center"><input type="submit" value="Proceed" [disabled]="!f2.valid" class="btn btn-danger"/></div>
+            
+              <div class="mt-2 text-center"><input type="submit" value="Pay &#8377; {{walletbalance}}" [disabled]="!f2.valid" class="btn btn-primary"/></div>
 
         </form>
+    </div>
     </div>
 </div>
 </form>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EwalletService } from '../ewallet.service';
 import { Transactiondetails } from '../transactiondetails';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-money',
@@ -16,12 +17,14 @@ export class AddMoneyComponent implements OnInit {
   showtransactiondetail:boolean;
   transactionhistroy:Transactiondetails[];
   showtransactionhistroydetails:boolean;
-  constructor(private eser:EwalletService) { }
+  constructor(private eser:EwalletService,private router: Router) { }
 
   ngOnInit(): void {
     this.eser.gettransactiondetail(this.eser.transactionid).subscribe(data=>
       {
+        this.transactionid=this.eser.transactionid;
       this.transactiondetail=data;
+
       console.log(this.transactiondetail);
       this.showtransactiondetail=true;
     },
@@ -33,20 +36,7 @@ export class AddMoneyComponent implements OnInit {
     
   }
   gettransactionhistroy()
-  {
-   
-    this.eser.gettransactionhistroy().subscribe(data=>
-      {
-      this.transactionhistroy=data;
-     
-      console.log(data);
-   
-      this.showtransactionhistroydetails=true;
-    },
-      error=>
-      {
-        console.log("error occured",error);
-      }
-    );
+  { 
+    this.router.navigate([`${"/detail/transactionhistory"}`]);
   }
 }
