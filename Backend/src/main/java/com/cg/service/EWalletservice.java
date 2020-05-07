@@ -214,7 +214,7 @@ public class EWalletservice implements IEwalletservice{
 		WalletUser walletuser;
 		walletuser= walletdao.findById(walletid).orElseThrow(()->new AddmoneyServiceException("Id Not Found"));
 		
-		if(walletuser.getBank().getAccountNo()=="NA")
+		if(walletuser.getBank()==null)
 			throw new AddmoneyServiceException("Bank Account is not linked");
 		String accountno =walletuser.getBank().getAccountNo();
 	

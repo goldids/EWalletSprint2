@@ -22,13 +22,13 @@
     <div *ngIf=debitcard>
         <form name="form" #f2="ngForm" (ngSubmit)="gotoaddmoney('addmoney')" novalidate class="feedback-form">
             <small> Enter Your Card Details</small>
-            <input type="number" id="cardno" class="form-control" name="cardno" placeholder="Card number" ngModel maxlength="16" required #modelcard="ngModel" [(ngModel)]="debitcardinfo.debitid"/>
+            <input type="number" id="cardno" class="form-control" name="cardno" placeholder="Card number" required #modelcard="ngModel" [(ngModel)]="debitcardinfo.debitid" pattern="[0-9]{16}"/>
             <div class="alert alert-danger" *ngIf="modelcard.invalid && modelcard.touched">Account holdername required</div>
 
             <div class="row">
                 <div class="col">
                 <small>Expiry Month</small>
-                  <input type="number" class="form-control" id="expirymonth" placeholder="MM" name="expirymonth" ngModel maxlength="2" required #modelexp="ngModel" pattern="[0-1][0-9]" [(ngModel)]="debitcardinfo.expiremonth">
+                  <input type="number" class="form-control" id="expirymonth" placeholder="MM" name="expirymonth" max="12" min="0" required #modelexp="ngModel" [(ngModel)]="debitcardinfo.expiremonth">
                   <div class="alert alert-danger" *ngIf="modelexp.invalid && modelexp.touched">
                     <div *ngIf="modelexp.errors.required"><small>This field is required</small></div>
                     <div *ngIf="modelexp.errors.pattern"><small>Enter valid Month</small></div>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="col">
                     <small>Expiry year</small>
-                      <input type="number" class="form-control" id="expiryyear" placeholder="YYYY" name="expiryyear" ngModel maxlength="4" required #modelexpyear="ngModel" pattern="[2-3][0-1][2-9][0-9]" [(ngModel)]="debitcardinfo.expireyear">
+                      <input type="number" class="form-control" id="expiryyear" placeholder="YYYY" name="expiryyear" max="2099" min="2019" required #modelexpyear="ngModel" pattern="[2-3][0-1][2-9][0-9]" [(ngModel)]="debitcardinfo.expireyear">
                       <div class="alert alert-danger" *ngIf="modelexpyear.invalid && modelexpyear.touched">
                         <div *ngIf="modelexpyear.errors.required"><small>This field is required</small></div>
                         <div *ngIf="modelexpyear.errors.pattern"><small>Enter valid year</small></div>

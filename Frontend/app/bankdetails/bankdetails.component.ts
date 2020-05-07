@@ -27,7 +27,7 @@ export class BankdetailsComponent implements OnInit {
       this.banklinked=data;
      this.wallet=this.eser.wallet;
      console.log(data);
-     
+     this.askaccountNo=false;
     },
       error=>
       {
